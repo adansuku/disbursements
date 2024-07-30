@@ -1,0 +1,48 @@
+# docker-compose.yml
+services:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && rails s -b '0.0.0.0'"
+    volumes:
+      - ".:/usr/src/app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: orders_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+
+  worker:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - ".:/usr/src/app"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - REDIS_URL_SIDEKIQ=redis://redis:6379/1
+
+volumes:
+  postgres_data:
+  redis:
