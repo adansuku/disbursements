@@ -1,0 +1,18 @@
+# Global RuboCop configuration
+AllCops:
+  NewCops: enable  
+
+# Configuration for line length
+Layout/LineLength:
+  Max: 120  
+
+# Configuration for method length
+Metrics/MethodLength:
+  Max: 30 
+
+# Configuration for class length
+Metrics/ClassLength:
+  Max: 150 
+# Configuration for block length
+Metrics/BlockLength:
+  Max: 50 
