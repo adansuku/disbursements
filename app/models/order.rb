@@ -4,4 +4,26 @@
 # Each order belongs to a specific merchant.
 class Order < ApplicationRecord
   belongs_to :merchant
+  belongs_to :disbursement, optional: true, dependent: :destroy
+
+  validates :amount, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :merchant_id, presence: true
+
+  scope :unprocessed, -> { where(disbursement: nil) }
+
+  COMMISSION_RATES = {
+    high_rate: 0.01,
+    middle_rate: 0.0095,
+    low_rate: 0.0085
+  }.freeze
+
+  def commission
+    if amount < 50
+      amount * COMMISSION_RATES[:high_rate]
+    elsif amount >= 50 && amount <= 300
+      amount * COMMISSION_RATES[:middle_rate]
+    else
+      amount * COMMISSION_RATES[:low_rate]
+    end.round(2)
+  end
 end
