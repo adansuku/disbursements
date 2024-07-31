@@ -2,24 +2,24 @@
 
 FROM ruby:3.3.0
 
-# Instala dependencias del sistema
+# Install system dependencies
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 
-# Configura el directorio de trabajo
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Copia el archivo Gemfile y Gemfile.lock al contenedor
+# Copy Gemfile and Gemfile.lock into the container
 COPY Gemfile* ./
 
-# Instala las gemas necesarias
+# Install necessary gems
 RUN gem install bundler:2.3.3
 RUN bundle install
 
-# Copia el resto de la aplicación al contenedor
+# Copy the rest of the application into the container
 COPY . .
 
-# Exponer el puerto
+# Expose the port
 EXPOSE 3000
 
-# Comando de inicio
+# Start command
 CMD ["bash", "-c", "rm -f tmp/pids/server.pid && rails s -b '0.0.0.0'"]
