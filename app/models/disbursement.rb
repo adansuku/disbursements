@@ -30,8 +30,6 @@ class Disbursement < ApplicationRecord
       disbursed_at:
     )
 
-    debugger
-
     errors.add(:disbursed_at, 'already has a disbursement for this merchant and date') if existing_disbursement.present?
   end
 end
