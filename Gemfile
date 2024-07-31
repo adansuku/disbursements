@@ -19,9 +19,6 @@ gem 'puma', '>= 5.0'
 # JavaScript import maps for managing JavaScript dependencies
 gem 'importmap-rails'
 
-# Progress bar for Ruby
-gem 'ruby-progressbar'
-
 # Hotwire's page accelerator for creating single-page-like applications
 gem 'turbo-rails'
 
@@ -45,19 +42,6 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 # Bootsnap to reduce boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-# Uncomment the following lines if needed:
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '>= 4.0.1'
-
-# Use Kredis to get higher-level data types in Redis
-# gem 'kredis'
-
-# Active Model has_secure_password for secure password handling
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage for image processing (if needed)
-# gem 'image_processing', '~> 1.2'
-
 group :development, :test do
   # Debugging tools for development and testing environments
   gem 'debug', platforms: %i[mri windows]
@@ -67,14 +51,23 @@ group :development, :test do
 end
 
 group :development do
-  # Console for handling exceptions in development
+  gem 'error_highlight', '>= 0.6.0', platforms: [:ruby]
+
+  # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
-  # Uncomment to add speed badges for performance profiling
-  # gem 'rack-mini-profiler'
+  # Rspec
+  gem 'rspec-rails', '~> 5.0.0'
 
-  # Uncomment to speed up commands on slow machines or large apps
-  # gem 'spring'
+  # Factory bot
+  gem 'factory_bot_rails'
+  gem 'faker'
+
+  # byebug
+  gem 'byebug'
+
+  # Ruby task_use progressbar
+  gem 'ruby-progressbar'
 end
 
 group :test do
