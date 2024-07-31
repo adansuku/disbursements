@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_074252) do
   create_table "orders", force: :cascade do |t|
     t.uuid "merchant_id"
     t.decimal "amount", precision: 10, scale: 2
+    t.decimal "commission_fee", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "disbursement_id"

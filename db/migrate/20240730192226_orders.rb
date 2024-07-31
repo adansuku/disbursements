@@ -8,6 +8,7 @@ class Orders < ActiveRecord::Migration[7.1]
     create_table :orders do |t|
       t.uuid :merchant_id
       t.decimal :amount, precision: 10, scale: 2
+      t.decimal :commission_fee, precision: 10, scale: 2
 
       t.timestamps
     end
