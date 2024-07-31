@@ -23,4 +23,13 @@ class Disbursement < ApplicationRecord
   def update_orders_disbursements
     orders.update_all(disbursement_id: nil, commission_fee: nil)
   end
+
+  def unique_disbursement_for_merchant_and_date
+    existing_disbursement = Disbursement.find_by(
+      merchant_id:,
+      disbursed_at:
+    )
+
+    errors.add(:disbursed_at, 'already has a disbursement for this merchant and date') if existing_disbursement.present?
+  end
 end
