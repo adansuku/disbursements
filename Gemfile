@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '3.3.0'
@@ -59,6 +61,9 @@ gem 'bootsnap', require: false
 group :development, :test do
   # Debugging tools for development and testing environments
   gem 'debug', platforms: %i[mri windows]
+
+  # Add RuboCop for static code analysis and style checking
+  gem 'rubocop', require: false
 end
 
 group :development do

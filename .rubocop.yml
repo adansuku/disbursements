@@ -1,7 +1,21 @@
 # Global RuboCop configuration
 AllCops:
   NewCops: enable  
-
+  Exclude:
+    - 'bin/*'
+    - 'log'
+    - 'tmp'
+    - 'node_modules'
+    - 'vendor'
+    - 'public'
+    - 'spec/fixtures'
+    - 'db/schema.rb'
+    - 'config/environments'
+    - 'config/initializers'
+    - 'config/locales'
+    - 'coverage'
+    - 'build'
+    - 'dist'
 # Configuration for line length
 Layout/LineLength:
   Max: 120  
@@ -13,6 +27,11 @@ Metrics/MethodLength:
 # Configuration for class length
 Metrics/ClassLength:
   Max: 150 
+
 # Configuration for block length
 Metrics/BlockLength:
   Max: 50 
+
+# Disable specific cop
+Style/Documentation:
+  Enabled: false  # Disable the documentation cop
