@@ -12,7 +12,7 @@ class Merchant < ApplicationRecord
   validates :reference, presence: true
 
   def pending_daily_orders_for_disbursement
-    orders.where(disbursement_id: nil).where.not('DATE(created_at) = ?', Date.today).group_by do |order|
+    orders.where(disbursement: nil).where.not('DATE(created_at) = ?', Date.today).group_by do |order|
       order.created_at.to_date
     end
   end
@@ -26,6 +26,15 @@ class Merchant < ApplicationRecord
       start_date += 7.days
     end
     orders_grouped_by_week
+  end
+
+  def merchant_disbursement_exists_for_period?(date)
+    existing_disbursement = Disbursement.find_by(
+      merchant_id: id,
+      disbursed_at: date
+    )
+
+    existing_disbursement.present?
   end
 
   private

@@ -37,6 +37,6 @@ class DisbursementService
   end
 
   def create_disbursement_and_process_orders(date, orders)
-    # Call The disbursement process service
+    DisbursementCalculatorService.new(date, orders, merchant).calculate_and_create_disbursement
   end
 end
