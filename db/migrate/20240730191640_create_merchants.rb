@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# This migration creates the merchants table.
+# It includes columns for reference (string), email (string), live_on (date),
+# disbursement_frequency (string), and minimum_monthly_fee (decimal with precision 10 and scale 2).
+
 class CreateMerchants < ActiveRecord::Migration[7.0]
   def up
     create_table :merchants, id: :uuid do |t|

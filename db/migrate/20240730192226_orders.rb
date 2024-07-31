@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# This migration creates the orders table with a reference to the merchants table.
+# It includes columns for merchant_id (UUID) and amount (decimal with precision 10 and scale 2).
+# It also adds a foreign key constraint and an index on the merchant_id column.
 class Orders < ActiveRecord::Migration[7.1]
   def up
     create_table :orders do |t|
