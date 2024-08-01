@@ -26,4 +26,9 @@ class Order < ApplicationRecord
       amount * COMMISSION_RATES[:low_rate]
     end.round(2)
   end
+
+  def first_order_of_month?
+    start_of_month = created_at.beginning_of_month
+    !merchant.orders.exists?(['created_at >= ? AND created_at < ?', start_of_month, created_at])
+  end
 end
