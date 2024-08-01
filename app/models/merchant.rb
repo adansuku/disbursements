@@ -44,6 +44,6 @@ class Merchant < ApplicationRecord
 
     orders_within_week = orders.where(created_at: start_date..end_date, disbursement: nil)
 
-    orders_within_week if end_date <= Date.today && orders_within_week.present?
+    orders_within_week if (end_date <= Date.today) && orders_within_week.present?
   end
 end
