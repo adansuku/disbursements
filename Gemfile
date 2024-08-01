@@ -33,6 +33,8 @@ gem 'activerecord-import'
 
 # Redis for caching and background job processing
 gem 'redis'
+
+# Sidekiq for background job processing
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
