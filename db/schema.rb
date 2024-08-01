@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_084627) do
   create_table "monthly_fees", force: :cascade do |t|
     t.uuid "merchant_id", null: false
     t.date "month"
-    t.float "amount"
+    t.decimal "amount", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
