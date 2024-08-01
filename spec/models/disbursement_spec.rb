@@ -74,12 +74,29 @@ RSpec.describe Disbursement, type: :model do
     end
   end
 
+  describe 'class methods' do
+    describe '.annual_disbursement_report' do
+      it 'returns annual disbursement report data' do
+        Disbursement.destroy_all
+        create(:disbursement, disbursed_at: '2022-01-01', amount_disbursed: 100, amount_fees: 5, id: 1)
+        create(:disbursement, disbursed_at: '2022-02-01', amount_disbursed: 150, amount_fees: 7.5, id: 2)
+        create(:disbursement, disbursed_at: '2023-02-01', amount_disbursed: 50, amount_fees: 7, id: 3)
+
+        report = Disbursement.annual_disbursement_report
+        expect(report).to eq([
+                               { year: 2022, number: 2, total_amount_disbursed: 250.0, total_amount_fees: 12.5 },
+                               { year: 2023, number: 1, total_amount_disbursed: 50.0, total_amount_fees: 7 }
+                             ])
+      end
+    end
+  end
+
   describe '#unique_disbursement_for_merchant_and_date' do
     let(:merchant) { create(:merchant) }
     let(:disbursed_at) { Time.now }
 
     it 'should add an error if a disbursement already exists for the merchant and date' do
-      create(:disbursement, merchant:, disbursed_at:)
+      existing_disbursement = create(:disbursement, merchant:, disbursed_at:)
       disbursement = build(:disbursement, merchant:, disbursed_at:)
       disbursement.valid?
 
