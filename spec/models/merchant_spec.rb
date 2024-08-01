@@ -49,7 +49,7 @@ RSpec.describe Merchant, type: :model do
   end
 
   describe '#pending_weekly_orders_for_disbursement' do
-    let(:live_on) { Date.today.beginning_of_month }
+    let(:live_on) { Date.today - 10.days }
     let!(:order1) { create(:order, merchant:, created_at: live_on, disbursement: nil) }
     let!(:order2) { create(:order, merchant:, created_at: live_on + 7.days, disbursement: nil) }
     let!(:order3) { create(:order, merchant:, created_at: live_on + 6.days, disbursement: nil) }
