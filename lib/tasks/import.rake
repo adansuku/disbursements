@@ -10,8 +10,8 @@ namespace :import do
     BATCH_SIZE = 1000
 
     begin
-      merchants_csv_path = Rails.root.join('db', 'data', 'merchants.csv')
-      orders_csv_path = Rails.root.join('db', 'data', 'orders.csv')
+      merchants_csv_path = Rails.root.join('db', 'data', 'merchants_data.csv')
+      orders_csv_path = Rails.root.join('db', 'data', 'orders_data.csv')
 
       puts 'Starting the process, please wait it could take a while...'
 
