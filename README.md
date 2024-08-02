@@ -53,7 +53,7 @@ There are some workers to run daily, weekly, and reporting jobs.
 These jobs are configured to run on specific dates, but you can run them individually when needed.
 
 Created a worker to increase server speed. Be careful with :concurrency: 5; you should check your machine's performance. Ensure that the resources are tailored to the needs and the number of activated workers.
-![Report](https://imgur.com/qkRFFnz)
+![Report](https://i.imgur.com/qkRFFnz.png)
 
 I created a new job to populate all the monthly fees from `live_on` to the last completed month from today. **MonthlyFeeJob**
 
@@ -133,7 +133,7 @@ For handling periodic tasks, such as daily disbursements, a background job is sc
 ## Reporting tool
 This report provides a summary of all processed orders after launching the report_tool!
 --
-![Report](https://imgur.com/jXZyr5w)
+![Report](https://i.imgur.com/jXZyr5w.png)
 
 
 ## Conclusion
