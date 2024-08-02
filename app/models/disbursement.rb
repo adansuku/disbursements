@@ -2,6 +2,7 @@ class Disbursement < ApplicationRecord
   belongs_to :merchant
   has_many :orders
 
+  # Validations to ensure data integrity
   validates :reference, presence: true, uniqueness: true
   validates :disbursed_at, presence: true
   validates :amount_disbursed, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -10,10 +11,13 @@ class Disbursement < ApplicationRecord
   validates :disbursement_type, presence: true
   validate :unique_disbursement_for_merchant_and_date
 
+  # Callback to update associated orders when a disbursement is destroyed
   before_destroy :update_orders_disbursements
 
+  # Scope to filter disbursements by year
   scope :by_year, ->(year) { where('extract(year from disbursed_at) = ?', year) }
 
+  # Generates an annual report of disbursements
   def self.annual_disbursement_report
     select("
     EXTRACT(YEAR FROM disbursed_at) as year,
@@ -35,10 +39,12 @@ class Disbursement < ApplicationRecord
 
   private
 
+  # Updates associated orders when a disbursement is destroyed
   def update_orders_disbursements
     orders.update_all(disbursement_id: nil, commission_fee: nil)
   end
 
+  # Custom validation to ensure only one disbursement per merchant per date
   def unique_disbursement_for_merchant_and_date
     existing_disbursement = Disbursement.find_by(
       merchant_id:,

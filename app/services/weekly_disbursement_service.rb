@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WeeklyDisbursementService
   def perform
     merchants_to_disburse_weekly = Merchant.where(disbursement_frequency: 'WEEKLY')

@@ -25,7 +25,7 @@ RSpec.describe MonthlyFeeService do
 
   describe '#calculate_and_create_monthly_fee' do
     let(:merchant) { create(:merchant, minimum_monthly_fee: 10) }
-    let(:order) { create(:order, merchant: merchant, created_at: Time.now.last_month, amount: 20) }
+    let(:order) { create(:order, merchant:, created_at: Time.now.last_month, amount: 20) }
 
     it 'creates a monthly fee with the correct amount' do
       merchant.minimum_monthly_fee = 20
@@ -40,7 +40,7 @@ RSpec.describe MonthlyFeeService do
 
     it 'does not create a new monthly fee if already exists for the month' do
       date = Date.new(2022, 2, 2).beginning_of_month
-      create(:monthly_fee, merchant: merchant, month: date.next_month.beginning_of_month)
+      create(:monthly_fee, merchant:, month: date.next_month.beginning_of_month)
 
       expect do
         MonthlyFeeService.new(merchant, date).calculate_monthly_fee_from_date
