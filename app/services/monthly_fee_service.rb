@@ -1,9 +1,8 @@
 class MonthlyFeeService
   # Initializes the service with a merchant and an optional date
-  def initialize(merchant, date = Time.current)
+  def initialize(merchant = nil, date = nil)
     @merchant = merchant
     @date = date
-    raise ArgumentError, 'Merchant cannot be nil' if @merchant.nil?
   end
 
   # Calculates and creates the monthly fee for the specified date
@@ -13,13 +12,14 @@ class MonthlyFeeService
 
   # Calculates and creates monthly fees for all months since the merchant became active until the current month
   def all_months_for_merchant
-    create_monthly_fees_up_to_current_month
+    create_monthly_fees_up_to_current_month(merchant)
   end
 
   # Calculates and creates monthly fees for all merchants
-  def self.all_months_for_merchants
+  def all_months_for_merchants
     Merchant.find_each do |merchant|
-      new(merchant).create_monthly_fees_up_to_current_month
+      @merchant = merchant
+      create_monthly_fees_up_to_current_month(merchant)
     end
   end
 
@@ -56,7 +56,9 @@ class MonthlyFeeService
   end
 
   # Creates monthly fees from the merchant's start date up to the current month
-  def create_monthly_fees_up_to_current_month
+  def create_monthly_fees_up_to_current_month(merchant)
+    raise 'Merchant is avaliable' unless merchant
+
     current_month = Time.current.prev_month.end_of_month
     live_on_month = merchant.live_on.beginning_of_month
     months_between = (live_on_month..current_month).map(&:beginning_of_month).uniq

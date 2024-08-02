@@ -1,11 +1,16 @@
 WeeklyDisbursementJob:
-  cron: "0 9 * * *" # Every Day at 9:00
+  cron: "0 8 * * *" # Every Day at 8:00
   class: "WeeklyDisbursementJob"
   queue: "default"
 
 DailyDisbursementJob:
-  cron: "0 9 * * *" # Every Day at 9:00
+  cron: "0 8 * * *" # Every Day at 8:00
   class: "DailyDisbursementJob"
+  queue: "default"
+
+MonthlyDisbursementJob:
+  cron: "0 8 1 * *" # Every Month at 1st at 8:00 
+  class: "MonthlyDisbursementJob"
   queue: "default"
 
 YearlyExportJob:
