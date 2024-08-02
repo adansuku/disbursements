@@ -43,11 +43,11 @@ To set up and run the solution:
 ### Sidekiq
 Visit [http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) to run the worker jobs. 
 
-![Report](https://imgur.com/vmsrbgI)
+![Report](https://i.imgur.com/vmsrbgI.png)
 
-![Report](https://imgur.com/mlD8Y7V)
+![Report](https://i.imgur.com/mlD8Y7V.png)
 
-![Report](https://imgur.com/EM2Zrcs)
+![Report](https://i.imgur.com/EM2Zrcs.png)
 
 There are some workers to run daily, weekly, and reporting jobs. 
 These jobs are configured to run on specific dates, but you can run them individually when needed.
