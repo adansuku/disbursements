@@ -4,7 +4,7 @@
 # A merchant can have many orders, which are dependent on the merchant.
 class Merchant < ApplicationRecord
   has_many :orders, dependent: :destroy
-  has_many :disbursements, through: :orders
+  has_many :disbursements
   has_many :monthly_fees, dependent: :destroy
 
   validates :email, presence: true
