@@ -14,31 +14,31 @@ To set up and run the solution:
 1. Clone this repository to your local machine.
 2. Navigate to the project directory.
 3. Run docker build 
-> `docker-compose build`
+> `docker compose build`
 4. Create the database
-> `docker-compose run web bundle exec rake db:create`
+> `docker compose run web bundle exec rake db:create`
 5. Execute migrations
-> `docker-compose run web bundle exec rake db:migrate`
+> `docker compose run web bundle exec rake db:migrate`
 6. Import the dummy data with a rake task
-> `docker-compose run web bundle exec rake import:data`
+> `docker compose run web bundle exec rake import:data`
 *Take care with this import, the full import process takes at least 10m, If you prefer to test the app, change the route into the rake tast from merchants_data to merchants_dev and orders_data orders_dev*
 > `merchants_csv_path = Rails.root.join(‘db’, ‘data’, ‘merchants_data.csv’)`
 > `orders_csv_path = Rails.root.join(‘db’, ‘data’, ‘orders_data.csv’)`
 7. After the procces, run
-> `docker-compose up`
+> `docker compose up`
 8. visit http://localhost:3000 to ensure the rails app is working
 
 ### Some docker basic commands 
 - How to login into the shell
-> `docker-compose run web bash`
+> `docker compose run web bash`
 - How to login into the ruby console
-> `docker-compose run web bundle exec rails c`
+> `docker compose run web bundle exec rails c`
 - How to run an independant instance of sidekiq
-> `docker-compose run worker bundle exec sidekiq -e development -C config/sidekiq.yml`
+> `docker compose run worker bundle exec sidekiq -e development -C config/sidekiq.yml`
 - How to runt the rspec suite tests
-> `docker-compose run web bundle exec rspec`
+> `docker compose run web bundle exec rspec`
 - How to run services from the console
-> `docker-compose run web bundle exec rails c`
+> `docker compose run web bundle exec rails c`
 
 ### Sidekiq
 Visit [http://localhost:3000/sidekiq](http://localhost:3000/sidekiq) to run the worker jobs. 
@@ -63,7 +63,7 @@ In the MonthlyFeeService there are 3 methods
 3. Calculate all months for an specific merchant
 
 - Run a service from Rails console
-> `docker-compose run web bundle exec rails c`
+> `docker compose run web bundle exec rails c`
 
 - Daily Disbursement for All merchants
 > `DailyDisbursementService.new.perform`
@@ -95,7 +95,7 @@ To run this entire process in the background, I schedule jobs for specific dates
 Or you can run manually from sidekiq http://localhost:3000/sidekiq/cron [http://localhost:3000/sidekiq/cron]
 
 ** Fix Possible problems with database permissions **
-- docker-compose exec db bash
+- docker compose exec db bash
 - psql -U postgres -h localhost 
 - Insert the root password
 
