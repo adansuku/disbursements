@@ -20,7 +20,7 @@ class Order < ApplicationRecord
   def commission
     if amount < 50
       amount * COMMISSION_RATES[:high_rate]
-    elsif amount >= 50 && amount <= 300
+    elsif amount > 50 && amount < 300
       amount * COMMISSION_RATES[:middle_rate]
     else
       amount * COMMISSION_RATES[:low_rate]

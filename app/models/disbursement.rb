@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-# Disbursement model represents a disbursement to a merchant.
-# Each disbursement belongs to a specific merchant and has many orders.
 class Disbursement < ApplicationRecord
   belongs_to :merchant
   has_many :orders
@@ -31,8 +27,8 @@ class Disbursement < ApplicationRecord
       {
         year: data.year.to_i,
         number: data.number_of_disbursements.to_i,
-        total_amount_disbursed: data.total_amount_disbursed.to_f,
-        total_amount_fees: data.total_amount_fees.to_f
+        total_amount_disbursed: data.total_amount_disbursed.to_f.round(2),
+        total_amount_fees: data.total_amount_fees.to_f.round(2)
       }
     end
   end
