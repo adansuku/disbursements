@@ -32,6 +32,9 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   Max: 50 
 
+Metrics/AbcSize:
+  Max: 50
+
 # Disable specific cop
 Style/Documentation:
   Enabled: false  # Disable the documentation cop

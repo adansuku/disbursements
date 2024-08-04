@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMonthlyFee < ActiveRecord::Migration[7.1]
   def up
     create_table :monthly_fees do |t|

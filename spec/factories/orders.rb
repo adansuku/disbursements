@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :order do
     sequence(:amount) { |n| Faker::Commerce.price(range: 10..100) + n }

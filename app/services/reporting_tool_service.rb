@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 class ReportingToolService
@@ -11,7 +13,7 @@ class ReportingToolService
               'Number of monthly fees charged (From minimum monthly fee)',
               'Amount of monthly fee charged (From minimum monthly fee)']
 
-      @combined_info_by_year.each do |_year, data|
+      @combined_info_by_year.each_value do |data|
         csv << [
           data[:year],
           data[:number],

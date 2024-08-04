@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Disbursement, type: :model do
@@ -65,11 +67,11 @@ RSpec.describe Disbursement, type: :model do
     describe '.by_year' do
       it 'filters disbursements by year' do
         Disbursement.destroy_all
-        disbursement_2022 = create(:disbursement, disbursed_at: '2022-01-01')
-        disbursement_2023 = create(:disbursement, disbursed_at: '2023-01-01')
+        disbursement2022 = create(:disbursement, disbursed_at: '2022-01-01')
+        disbursement2023 = create(:disbursement, disbursed_at: '2023-01-01')
 
-        expect(Disbursement.by_year(2022).reload).to eq([disbursement_2022])
-        expect(Disbursement.by_year(2023).reload).to eq([disbursement_2023])
+        expect(Disbursement.by_year(2022).reload).to eq([disbursement2022])
+        expect(Disbursement.by_year(2023).reload).to eq([disbursement2023])
       end
     end
   end
@@ -96,7 +98,7 @@ RSpec.describe Disbursement, type: :model do
     let(:disbursed_at) { Time.now }
 
     it 'should add an error if a disbursement already exists for the merchant and date' do
-      existing_disbursement = create(:disbursement, merchant:, disbursed_at:)
+      create(:disbursement, merchant:, disbursed_at:)
       disbursement = build(:disbursement, merchant:, disbursed_at:)
       disbursement.valid?
 

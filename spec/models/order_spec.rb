@@ -1,8 +1,7 @@
-# spec/models/order_spec.rb
-
+# frozen_string_literal: true
 require 'rails_helper'
 
-RSpec.describe Order, type: :model do
+RSpec.describe Order, type: :model do # rubocop:disable Metrics/BlockLength
   describe 'validations' do
     let(:merchant) { create(:merchant) }
     let(:disbursement) { create :disbursement }

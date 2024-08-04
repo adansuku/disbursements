@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :merchant do
     sequence(:email) { |n| "#{n}_#{Faker::Internet.email}" }

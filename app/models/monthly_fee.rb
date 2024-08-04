@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MonthlyFee < ApplicationRecord
   belongs_to :merchant
 

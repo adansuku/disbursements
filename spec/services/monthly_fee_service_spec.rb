@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe MonthlyFeeService do
@@ -9,7 +11,10 @@ RSpec.describe MonthlyFeeService do
       date = Date.new(2023, 10, 1)
       merchant = create(:merchant)
 
-      expect_any_instance_of(MonthlyFeeService).to receive(:calculate_and_create_monthly_fee).with(date.beginning_of_month)
+      expect_any_instance_of(MonthlyFeeService)
+        .to receive(:calculate_and_create_monthly_fee)
+        .with(date.beginning_of_month)
+
       MonthlyFeeService.new(merchant, date).calculate_monthly_fee_from_date
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MonthlyFeeService
   # Initializes the service with a merchant and an optional date
   def initialize(merchant = nil, date = nil)

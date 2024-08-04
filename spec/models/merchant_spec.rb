@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Merchant, type: :model do
+RSpec.describe Merchant, type: :model do # rubocop:disable Metrics/BlockLength
   let!(:merchant) { create(:merchant) }
   describe '#validations' do
     it 'is valid with valid attributes' do

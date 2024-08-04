@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :monthly_fee do
     amount { Faker::Commerce.price(range: 10..100) }
