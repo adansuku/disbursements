@@ -1,4 +1,4 @@
-# Backend Coding Challenge
+# Backend Coding 
 ## Table of Contents
 1. Introduction
 2. Setup and Running the Solution
@@ -150,21 +150,3 @@ The backend coding challenge is implemented as a Ruby on Rails application, prov
 The remaining optimizations mentioned above should be discussed and planned collaboratively with the rest of the engineering team. Engaging in discussions about infrastructure, worker optimization, and overall system scalability will contribute to a well-rounded and performant solution.
 
 The solution provided here serves as a starting point and can be iteratively improved based on feedback, team discussions, and evolving project requirements.
-
-## Personal Reflection and Request for Feedback
-I thoroughly enjoyed tackling the Backend Coding Challenge. Over approximately 6-7 hours, spread across daily 3-hour sessions, I immersed myself in automating the calculation of merchant payouts and commissions.
-
-While I am pleased with the final outcome, I recognize there are areas for improvement, particularly regarding performance optimization and more comprehensive testing. Reflecting on the experience, I see opportunities to enhance system efficiency and to expand the test suite to cover edge cases and special scenarios.
-Given the time constraints, I focused on delivering a functional solution. Nonetheless, I understand there is always room for improvement and growth.
-
-I would greatly appreciate any feedback you can provide. Whether it's identifying areas for enhancement, pointing out critical errors, or suggesting alternative approaches, I am eager to learn and improve.
-
-Thank you once again for this opportunity. I look forward to your team's feedback and any suggestions for my professional development.
-
-Have a great day!
-Adán
----
- - Adán González
- - adangrx@gmail.com
- - https://adan.engineer
- - +34 692 817 071
